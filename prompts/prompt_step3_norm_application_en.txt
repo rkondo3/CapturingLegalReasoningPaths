@@ -1,0 +1,8 @@
+"""Below is a list of legal norms and a sentence containing legal application. Identify which legal norm the legal application is based on and select the most appropriate one. Respond in JSON format only. Avoid responding in any form other than JSON.
+
+Legal Norms:
+%s
+
+Legal Application:
+%s
+"""

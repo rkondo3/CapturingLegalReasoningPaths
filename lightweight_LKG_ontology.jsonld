@@ -1,0 +1,146 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/",
+    "hna": "https://github.com/hisanor013/HierarchicalNarratives/lightweight_ontology_hna.jsonld#",
+    "lkg": "https://github.com/rkondo3/CapturingLegalReasoningPaths/lightweight_LKG_ontology.jsonld#" 
+  },
+  "@graph": [
+    {
+      "@id": "lkg:LegalDocument",
+      "@type": "owl:Class",
+      "rdfs:label": "Legal Document",
+      "rdfs:comment": "A document produced in a legal context, such as a statute, regulation, contract, or judicial opinion.",
+      "rdfs:subClassOf": [
+        { "@id": "schema:CreativeWork" }
+      ]
+    },
+    {
+      "@id": "lkg:Judgment",
+      "@type": "owl:Class",
+      "rdfs:label": "Judgment",
+      "rdfs:comment": "A court judgment that states the facts found, the applied legal norms, and the final decision.",
+      "rdfs:subClassOf": [
+        { "@id": "lkg:LegalDocument" }
+      ]
+    },
+    {
+      "@id": "lkg:LegalNode",
+      "@type": "owl:Class",
+      "rdfs:label": "Legal Node",
+      "rdfs:comment": "A generic node representing an element of legal reasoning, such as a fact, legal norm, legal application, or provision.",
+      "rdfs:subClassOf": [
+        { "@id": "schema:Intangible" }
+      ]
+    },
+    {
+      "@id": "lkg:sourceText",
+      "@type": "rdf:Property",
+      "rdfs:label": "source text",
+      "rdfs:comment": "The exact text span in the source document from which this legal node is extracted.",
+      "rdfs:domain": "lkg:LegalNode",
+      "rdfs:range": "schema:Text"
+    },
+    {
+      "@id": "lkg:sourceDocument",
+      "@type": "rdf:Property",
+      "rdfs:label": "source document",
+      "rdfs:comment": "Indicates the source document",
+      "rdfs:domain": "lkg:LegalNode",
+      "rdfs:range": "lkg:LegalDocument"
+    },
+    {
+      "@id": "lkg:LegalApplication",
+      "@type": "owl:Class",
+      "rdfs:label": "Legal Application",
+      "rdfs:comment": "A reasoning step that applies a legal norm to a fact.",
+      "rdfs:subClassOf": [
+        { "@id": "lkg:LegalNode" },
+        { "@id": "hna:ActionPattern" }
+      ]
+    },
+    {
+      "@id": "lkg:appliesNorm",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Relates a legal application to the legal norm(s) that it applies.",
+      "rdfs:label": "applies norm",
+      "rdfs:domain": "lkg:LegalApplication",
+      "rdfs:range": "lkg:LegalNorm"
+    },
+    {
+      "@id": "lkg:toFact",
+      "@type": "rdf:Property",
+      "rdfs:label": "to fact",
+      "rdfs:domain": "lkg:LegalApplication",
+      "rdfs:range": "lkg:Fact",
+      "rdfs:comment":"Relates a legal application to the fact(s) it is applied to."
+    },
+    {
+      "@id": "lkg:Fact",
+      "@type": "owl:Class",
+      "rdfs:label": "Fact",
+      "rdfs:comment": "Case-specific factual findings based on submitted evidence or undisputed facts. No legal reasoning or interpretation is included.",
+      "rdfs:subClassOf": [
+        { "@id": "lkg:LegalNode" },
+        { "@id": "hna:ActionPattern" }
+      ]
+    },
+    {
+      "@id": "lkg:toApplication",
+      "@type": "rdf:Property",
+      "rdfs:label": "to legal application",
+      "rdfs:comment": "Relates a fact to the legal application step(s) that use it.",
+      "rdfs:domain": "lkg:Fact",
+      "rdfs:range": "lkg:LegalApplication",
+      "owl:inverseOf": "lkg:toFact"
+    },
+    {
+      "@id": "lkg:LegalNorm",
+      "@type": "owl:Class",
+      "rdfs:label": "Legal Norm",
+      "rdfs:comment": "The rule expressed by the law itself. Especially when the text provides a generalized abstract legal standard based on the purpose or intent of the law, classify it as a legal norm— even if the text mentions the background or purpose.",
+      "rdfs:subClassOf": [
+        { "@id": "lkg:LegalNode" },
+        { "@id": "hna:ActionPattern" }
+      ]
+    },
+    {
+      "@id": "lkg:appliedInApplication",
+      "@type": "rdf:Property",
+      "rdfs:label": "applied in application",
+      "rdfs:comment": "Relates a legal norm to the legal application step(s) in which it is used.",
+      "rdfs:domain": "lkg:LegalNorm",
+      "rdfs:range": "lkg:LegalApplication",
+      "owl:inverseOf": "lkg:appliesNorm"
+    },
+    {
+      "@id": "lkg:fromProvision",
+      "@type": "rdf:Property",
+      "rdfs:label": "from provision",
+      "rdfs:comment": "inverse link from a legal norm to the provision it is derived from.",
+      "rdfs:domain": "lkg:LegalNorm",
+      "rdfs:range": "lkg:Provision",
+      "owl:inverseOf": "lkg:provisionToNorm"
+    },
+    {
+      "@id": "lkg:Provision",
+      "@type": "owl:Class",
+      "rdfs:label": "Provision",
+      "rdfs:comment": "A cited unit of a legislative text, such as an article, paragraph, or item, that can serve as the source of a legal norm.",
+      "rdfs:subClassOf": [
+        { "@id": "lkg:LegalNode" },
+        { "@id": "schema:LegislationObject" }
+      ]
+    },
+    {
+      "@id": "lkg:provisionToNorm",
+      "@type": "rdf:Property",
+      "rdfs:label": "provision to norm",
+      "rdfs:comment": "Links a provision to the legal norm derived from it.",
+      "rdfs:domain": "lkg:Provision",
+      "rdfs:range": "lkg:LegalNorm"
+    }
+  ]
+}

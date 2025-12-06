@@ -1,0 +1,25 @@
+"""Below, facts and legal application sentences are given.
+Only those that meet the following conditions should be identified as "Legal Application," and the corresponding facts must be clearly indicated in JSON:
+- Based on an explicit legal norm (laws, cabinet orders, ministerial ordinances, municipal ordinances, etc.)
+- Render a legal evaluation such as lawful/unlawful with respect to specific facts
+
+The following types of sentences do not constitute legal application. Do not link them to any facts; instead, return an empty list []:
+- Sentences that merely state consistency with technical guidelines or standards
+- Sentences that only evaluate a party's assertions, such as "the claim has no grounds"
+- Sentences that summarize or organize facts without any legal evaluation
+- Sentences that explain only the legal provisions or analytical framework that serve merely as a premise for legal application (no evaluation is made)
+- Sentences that merely describe the course of administrative procedures (such as council approval or plan changes) without making any evaluation such as "lawful"
+
+The output must be restricted to the following format:
+json
+{
+  "Application1": [corresponding fact number (e.g., "Fact 25")],
+  "Application2": []
+}
+
+Facts:
+%s
+
+Legal Application:
+%s
+"""

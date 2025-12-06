@@ -1,0 +1,41 @@
+"""From the following excerpt of a civil district court judgment, extract and output the portions corresponding to the labels below through step-by-step and logical classification. Multiple labels may apply to the same text. As reference, an outline of the case is also provided.
+
+Labels:
+ - Judicial Facts  
+   (Case-specific factual findings based on submitted evidence or undisputed facts. No legal reasoning or interpretation is included.  
+   Example: "Zark Noxis was born on Saturn but currently lives on Mars.")
+
+ - Citation or Reference to Laws, Ministerial Ordinances, Cabinet Orders, Regulations, or Contracts  
+   (Only the citation itself such as article/paragraph numbers or the legal source name, and nothing more.  
+   Example: "Article 1 and Article 2 of the Law on Coexistence with Martians")
+
+ - Legal Norm  
+   (The rule expressed by the law itself. Especially when the text provides a generalized abstract legal standard based on the purpose or intent of the law, classify it as a legal norm— even if the text mentions the background or purpose.  
+   Example: “The Law on Coexistence with Martians aims to ensure peaceful coexistence between humanity and Martians... therefore, ‘Martian’ (Art. 2) refers to…”)
+
+ - Statutory Interpretation  
+   (Interpretation necessary to clarify the meaning, scope, or structure of the law prior to forming a legal norm. This includes reasoning about purpose or legislative intent when it has not yet become a generalized rule.  
+   Example: “Due to repeated conflicts between humans and Martians, it is necessary to widely coexist with life forms related to Mars.”)
+
+ - Legal Application  
+   (Applying the law or legal norm to the specific facts of the case.  
+   Example: “Since Zark Noxis lives on Mars and is not human, he qualifies as a ‘Martian.’”)
+
+ - Judgment Conclusion
+
+Instructions:
+- Do not alter or create new text.
+- If the text appears in a section labeled “Facts,” treat it as fact.  
+- If it appears in the court’s reasoning section, treat it as part of the judicial reasoning.
+- Some labels may not apply; in those cases, return an empty result for that label.
+
+Output Format:
+Return only JSON. The keys must be the labels, and the values must be lists of the matching text.  
+If paragraph numbers or other markers appear at the beginning of the sentence, ignore them.
+
+Case Summary:
+%s
+
+Civil District Court Judgment Excerpt:
+%s
+"""

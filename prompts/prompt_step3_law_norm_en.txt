@@ -1,0 +1,18 @@
+"""Next, a list of laws and legal norms will be provided.
+Answer which legal norm corresponds to each law in JSON format. Use the law as the key and the legal norm as the value. Do not respond in any format other than JSON.
+
+Laws:
+%s
+
+Legal Norms:
+%s
+
+Original Quotation:
+%s
+
+Example of Original Quotation:
+The Law on Coexistence with Martians aims to ensure peaceful coexistence between humanity and Martians in response to the increasing number of conflicts with life forms originating from Mars, thereby securing the common safety and interests of humankind (Article 1). "Martians" (Article 2) refers to life forms related to Mars that are not human.
+
+Example Answer:
+{"Law on Coexistence with Martians Article 1": "The Law on Coexistence with Martians aims to ensure peaceful coexistence between humanity and Martians in response to the increasing number of conflicts with life forms originating from Mars, thereby securing the common safety and interests of humankind (Article 1)", "Law on Coexistence with Martians Article 2": "“Martians” (Article 2) refers to life forms related to Mars that are not human."}
+"""

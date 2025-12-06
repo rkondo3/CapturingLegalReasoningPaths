@@ -1,0 +1,11 @@
+"""A list of elements is provided in which the names of laws, ministerial ordinances, cabinet orders, regulations, or contracts have been abbreviated, along with the original text in which they appear.
+Using the original text as reference, reconstruct the omitted portions and normalize them in the format: {"norm":["Mars Act Article 999","Mars Act Article 888"]}. Avoid any output format other than JSON.
+
+If an item is not a law, ministerial ordinance, cabinet order, regulation, or contract, skip it.
+
+List elements with omitted names:
+%s
+
+Original text:
+%s
+"""
